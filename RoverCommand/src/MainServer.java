@@ -9,8 +9,11 @@ public class MainServer {
 	public MainServer() {
 		try (ServerSocket serverSocket = new ServerSocket(portNumber)) { 
 			System.out.println("Server Started");
+			System.out.println("IP: " + InetAddress.getLocalHost().getHostAddress());
             while (listening) {
+            	System.out.println("scanning for connections...");
 	            new ServerThread(serverSocket.accept()).start();
+	            System.out.println("connection established");
 	        }
 	    } catch (IOException e) {
             System.err.println("Could not listen on port " + portNumber);

@@ -10,6 +10,8 @@ public class ServerThread extends Thread {
     }
     
     public void run() {
+    	
+    	System.out.println(socket.getInetAddress());
 
         try (
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -18,10 +20,12 @@ public class ServerThread extends Thread {
             String inputLine;
             while (true) {
             	try {
-            		inputLine = in.readLine();
-            		out.println("Recieved: " + inputLine);
-                    if (inputLine.equals("Exit"))
-                        break;
+            		if((inputLine = in.readLine()) != null) {
+	            		System.out.println("Recieved: " + inputLine);
+	            		out.println("Recieved: " + inputLine);
+	                    if (inputLine.equals("Exit"))
+	                        break;
+            		}
             	}
             	catch (SocketException e) {
             		System.out.println("Client Disconnected");
