@@ -13,7 +13,6 @@ public class MainServer {
             while (listening) {
             	System.out.println("scanning for connections...");
 	            new ServerThread(serverSocket.accept()).start();
-	            System.out.println("connection established");
 	        }
 	    } catch (IOException e) {
             System.err.println("Could not listen on port " + portNumber);

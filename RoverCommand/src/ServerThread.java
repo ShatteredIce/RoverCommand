@@ -11,7 +11,7 @@ public class ServerThread extends Thread {
     
     public void run() {
     	
-    	System.out.println(socket.getInetAddress());
+    	System.out.println("connection established with: " + socket.getInetAddress());
 
         try (
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
